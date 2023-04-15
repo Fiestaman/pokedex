@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function PokemonListItem({ pokemon }) {
-  // destructure pokemon object
-  const { name, url, id } = pokemon;
+export default function PokemonListItem({ pokemon: { name, url, id } }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
