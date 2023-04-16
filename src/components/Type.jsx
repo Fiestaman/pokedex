@@ -4,7 +4,7 @@ export default function Type({ type: { name } }) {
 
   return (
     <>
-      <div className={name}>{name}</div>
+      <div className={`${name} type`}>{name}</div>
     </>
   );
 }
