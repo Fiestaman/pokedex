@@ -5,7 +5,7 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
   const url = `https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`;
 
   const getPokemons = async () => {
-    if (pokemonList.length >= 5) return;
+    if (pokemonList.length > 0) return;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -19,6 +19,21 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
         ].img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
           i + 1
         }.png`;
+        i < 151
+          ? (data.results[i].generation = 1)
+          : i < 251
+          ? (data.results[i].generation = 2)
+          : i < 386
+          ? (data.results[i].generation = 3)
+          : i < 493
+          ? (data.results[i].generation = 1)
+          : i < 649
+          ? (data.results[i].generation = 5)
+          : i < 721
+          ? (data.results[i].generation = 6)
+          : i < 809
+          ? (data.results[i].generation = 7)
+          : (data.results[i].generation = 8);
       }
       setPokemonList([...pokemonList, ...data.results]);
     } catch (err) {
@@ -28,7 +43,13 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
 
   const pokemons = () => {
     return pokemonList.map((pokemon) => {
-      return <PokemonListItem pokemon={pokemon} />;
+      return (
+        <PokemonListItem
+          pokemon={pokemon}
+          pokemonList={pokemonList}
+          setPokemonList={setPokemonList}
+        />
+      );
     });
   };
 
