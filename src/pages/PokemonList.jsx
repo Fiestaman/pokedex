@@ -1,12 +1,11 @@
 import PokemonListItem from "../components/PokemonListItem";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export default function PokemonList() {
-  const [pokemonList, setPokemonList] = useState([]);
-
+export default function PokemonList({ pokemonList, setPokemonList }) {
   const url = `https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`;
 
   const getPokemons = async () => {
+    if (pokemonList.length >= 5) return;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -14,6 +13,12 @@ export default function PokemonList() {
         data.results[i].name =
           data.results[i].name[0].toUpperCase() + data.results[i].name.slice(1);
         data.results[i].id = i + 1;
+        data.results[i].collected = false;
+        data.results[
+          i
+        ].img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+          i + 1
+        }.png`;
       }
       setPokemonList([...pokemonList, ...data.results]);
     } catch (err) {
