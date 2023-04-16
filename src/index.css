@@ -5,6 +5,7 @@ body {
 
 .types {
   display: flex;
+  color: white;
 }
 
 .App {
