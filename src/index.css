@@ -16,8 +16,15 @@ body {
   height: 100vh;
 }
 
-img {
+.pokemonImage {
   width: 100px;
+  height: 100px;
+  background-size: 120%;
+  background-position: center;
+}
+
+.collected {
+  background: yellowgreen;
 }
 
 .Poison {
