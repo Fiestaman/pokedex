@@ -1,7 +1,10 @@
 import PokemonListItem from "../components/PokemonListItem";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import SearchBar from "../components/SearchBar";
 
 export default function PokemonList({ pokemonList, setPokemonList }) {
+  const [term, setTerm] = useState("");
+
   const url = `https://pokeapi.co/api/v2/pokemon?limit=5&offset=0`;
 
   const getPokemons = async () => {
@@ -41,16 +44,26 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
     }
   };
 
+  const filterPokemon = (pokemon) => {
+    const regex = new RegExp(`\\w*${term}\\w*`, "i");
+    return pokemon.name.match(regex) || pokemon.id.toString().match(regex);
+  };
+
   const pokemons = () => {
-    return pokemonList.map((pokemon) => {
-      return (
-        <PokemonListItem
-          pokemon={pokemon}
-          pokemonList={pokemonList}
-          setPokemonList={setPokemonList}
-        />
-      );
-    });
+    return pokemonList
+      .filter((pokemon) => {
+        return filterPokemon(pokemon);
+      })
+      .map((pokemon) => {
+        return (
+          <PokemonListItem
+            key={pokemon.id}
+            pokemon={pokemon}
+            pokemonList={pokemonList}
+            setPokemonList={setPokemonList}
+          />
+        );
+      });
   };
 
   useEffect(() => {
@@ -59,6 +72,8 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
 
   return (
     <div className="pokemonList">
+      <h1>Pokedex (Collection Tracker)</h1>
+      <SearchBar term={term} setTerm={setTerm} key="searchBar" />
       {pokemonList.length > 0 ? pokemons() : "Loading..."}
     </div>
   );
