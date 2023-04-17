@@ -23,7 +23,7 @@ export default function Pokemon() {
     // destructure pokemon information
     let {
       name,
-      sprites: { front_default },
+      sprites: { front_default: img },
       stats: {
         0: { base_stat: hp },
         1: { base_stat: attack },
@@ -38,16 +38,16 @@ export default function Pokemon() {
     name = name[0].toUpperCase() + name.slice(1);
 
     const types = () => {
-      return pokemonData.types.map((type) => {
+      return pokemonData.types.map((type, i) => {
         // console.log(type);
-        return <Type type={type.type} />;
+        return <Type type={type.type} key={`type${i}`} />;
       });
     };
 
     return (
       <>
         <h1 className="pokemonTitle">{name}</h1>
-        <img src={front_default} alt={name} />
+        <img src={img} alt={name} />
         <div className="types">{types()}</div>
         <div className="hp">HP: {hp}</div>
         <div className="attack">Attack: {attack}</div>
