@@ -11,18 +11,19 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main key="Main" />} />
         <Route
           path="/pokemons"
           element={
             <PokemonList
+              key="PokemonList"
               pokemonList={pokemonList}
               setPokemonList={setPokemonList}
             />
           }
         />
-        <Route path="/pokemons/:id" element={<Pokemon />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/pokemons/:id" element={<Pokemon key="Pokemon" />} />
+        <Route path="/about" element={<About key="About" />} />
       </Routes>
     </div>
   );
