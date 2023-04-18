@@ -8,18 +8,18 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 const client = new ApolloClient({
   uri: "https://beta.pokeapi.co/graphql/v1beta",
   cache: new InMemoryCache(),
-  fetchOptions: {
-    mode: "no-cors", // no-cors, *cors, same-origin
-  },
+  // fetchOptions: {
+  //   mode: "no-cors", // no-cors, *cors, same-origin
+  // },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <Router>
+    <Router>
+      <ApolloProvider client={client}>
         <App />
-      </Router>
-    </ApolloProvider>
+      </ApolloProvider>
+    </Router>
   </React.StrictMode>
 );
