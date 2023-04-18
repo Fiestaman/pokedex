@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export default function PokemonListItem({
-  pokemon: { name, url, id, collected, img },
+  pokemon: { name, id, collected, img },
   pokemonList,
   setPokemonList,
 }) {
