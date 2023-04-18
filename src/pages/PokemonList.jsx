@@ -1,7 +1,7 @@
 import PokemonListItem from "../components/PokemonListItem";
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
-import GetPokemons from "../components/GetPokemons";
+import BackButton from "../components/BackButton";
 
 export default function PokemonList({ pokemonList, setPokemonList }) {
   const [term, setTerm] = useState("");
@@ -34,17 +34,13 @@ export default function PokemonList({ pokemonList, setPokemonList }) {
 
   return (
     <div className="pokedex">
-      <h1>Pokedex (Collection Tracker)</h1>
+      <div className="pageTitle">
+        <BackButton />
+        <h1>Pokedex (Collection Tracker)</h1>
+      </div>
       <SearchBar term={term} setTerm={setTerm} key="searchBar" />
       <div className="pokemonList">
-        {pokemonList.length > 0 ? (
-          pokemons()
-        ) : (
-          <GetPokemons
-            setPokemonList={setPokemonList}
-            pokemonList={pokemonList}
-          />
-        )}
+        {pokemonList.length > 0 ? pokemons() : "Loading..."}
       </div>
     </div>
   );
