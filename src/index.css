@@ -17,14 +17,30 @@ body {
 }
 
 .pokemonImage {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
   background-size: 120%;
   background-position: center;
 }
 
 .collected {
   background: yellowgreen;
+}
+
+.pokemonList {
+  overflow: auto;
+  height: 700px;
+  width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 150px;
+}
+
+.pageTitle {
+  display: flex;
 }
 
 .Poison {
@@ -97,4 +113,15 @@ body {
 
 .Dragon {
   background: #7038f8;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.pokemonList::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.pokemonList {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
