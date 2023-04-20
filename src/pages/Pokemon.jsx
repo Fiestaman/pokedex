@@ -3,17 +3,19 @@ import { useParams } from "react-router-dom";
 import Type from "../components/Type";
 // import GetPokemonData from "../components/GetPokemonData";
 import BackButton from "../components/BackButton";
+import NotFound from "./NotFound";
 
 export default function Pokemon({ pokemonList }) {
   const { id } = useParams();
 
-  const loadedList = () => {
+  const loaded = () => {
+    if (id > 905 || id < 1) return <NotFound />;
+
     // destructure pokemon information
     let {
       name,
       gif,
       species: {
-        generation_id: genid,
         pokemon_v2_generation: { name: genName },
       },
       stats: {
@@ -51,7 +53,7 @@ export default function Pokemon({ pokemonList }) {
         <div className="specialAttack">Special Attack: {specialAttack}</div>
         <div className="specialDefense">Special Defense: {specialDefense}</div>
         <div className="speed">Speed: {speed}</div>
-        <div className="xp">XP: {xp}</div>
+        <div className="xp">XP: {xp || "0"}</div>
       </div>
     );
   };
@@ -62,5 +64,5 @@ export default function Pokemon({ pokemonList }) {
   //   if (pokemonList?.length === 0) {getPokemonData()}
   // }, []);
 
-  return <>{pokemonList?.length > 0 ? loadedList() : "Loading..."}</>;
+  return <>{pokemonList?.length > 0 ? loaded() : "Loading..."}</>;
 }
