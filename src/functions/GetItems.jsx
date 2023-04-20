@@ -1,11 +1,12 @@
 import { gql, useQuery } from "@apollo/client";
 
 export default function GetItems({ itemsList, setItemsList }) {
-  // console.log(pokemonList);
-  // return;
   const queryItems = gql`
     {
-      results: pokemon_v2_item(order_by: { id: asc }) {
+      results: pokemon_v2_item(
+        order_by: { id: asc }
+        where: { id: { _lt: 1006 } }
+      ) {
         cost
         name
         flavorText: pokemon_v2_itemflavortexts(
@@ -14,26 +15,32 @@ export default function GetItems({ itemsList, setItemsList }) {
         ) {
           flavor_text
         }
-        pokemon_v2_itemcategory {
-          pokemon_v2_itemcategorynames {
+        category: pokemon_v2_itemcategory {
+          pokemon_v2_itemcategorynames(where: { id: { _nin: [23, 36] } }) {
             name
+            id
           }
         }
         id
+        pokemon_v2_itemsprites {
+          sprites
+        }
       }
     }
   `;
-
-  // if (pokemonList.length > 0) return;
-  // try {
-  //   const { data } = useQuery(queryPokemons);
-  //   console.log(data);
 
   const { loading, error, data } = useQuery(queryItems, {
     onCompleted: (completedData) => {
       let { results } = completedData;
       let tempResults = [];
       for (let i = 0; i < results.length; i++) {
+        console.log("this is results[i]", results[i]);
+        if (
+          results[i]?.flavorText?.length === 0 ||
+          results[i]?.category?.pokemon_v2_itemcategorynames.length === 0
+        ) {
+          continue;
+        }
         let tempResult = { ...results[i] };
         let shorturl =
           "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/";
@@ -43,20 +50,10 @@ export default function GetItems({ itemsList, setItemsList }) {
         tempResults.push(tempResult);
       }
       setItemsList([...itemsList, ...tempResults]);
-      // onCompleted is a standard useQuery option
-      //   setPokemonList(completedData.results);
     },
   });
 
   // if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
-  //   console.log(data);
-  //   // const response = await fetch(url);
-  //   // const data = await response.json();
-  //   let { results } = data;
-  //   console.log("this is results", results);
   return;
-  // } catch (err) {
-  // console.log(err);
 }
-// };

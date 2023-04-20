@@ -28,6 +28,9 @@ export default function GetBerries({ berriesList, setBerriesList }) {
       let tempResults = [];
       for (let i = 0; i < results.length; i++) {
         let tempResult = { ...results[i] };
+        let shorturl =
+          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/";
+        tempResult.img = `${shorturl}${tempResult.name}-berry.png`;
         tempResult.name =
           tempResult.name[0].toUpperCase() + tempResult.name.slice(1);
         tempResults.push(tempResult);
