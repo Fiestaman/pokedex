@@ -23,11 +23,21 @@ body {
   background-position: center;
 }
 
+.berryImage,
+.itemImage {
+  width: 100px;
+  height: 100px;
+  background-size: 120%;
+  background-position: center;
+}
+
 .collected {
   background: yellowgreen;
 }
 
-.pokemonList {
+.pokemonList,
+.berriesList,
+.itemsList {
   overflow: auto;
   height: 700px;
   width: 700px;
@@ -116,12 +126,16 @@ img {
 }
 
 /* Hide scrollbar for Chrome, Safari, Opera */
-.pokemonList::-webkit-scrollbar {
+.pokemonList::-webkit-scrollbar,
+.berriesList::-webkit-scrollbar,
+.itemsList::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.pokemonList {
+.pokemonList,
+.berriesList,
+.itemsList {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
