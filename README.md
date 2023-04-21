@@ -21,7 +21,7 @@ You may also keep track of what Pokemon you have collected on the Pokemons page.
 
 ## Technology Used
 
-This game was built utilizing HTML, CSS, React.js, and GraphQL.
+This app was built utilizing HTML, CSS, React.js, and GraphQL.
 
 ## Contributing
 
