@@ -10,12 +10,12 @@ export default function ItemsListItem({ item: { name, id, img } }) {
   };
 
   return (
-    <div className={`itemListItem`} onClick={handleClickItem} key={id}>
+    <div className={`itemsListItem`} onClick={handleClickItem} key={id}>
       <div
         className="itemImage"
         style={{ backgroundImage: `url(${img})` }}
       ></div>
-      {id}. {name}
+      <div className="name">{name}</div>
     </div>
   );
 }

@@ -10,12 +10,12 @@ export default function BerriesListItem({ berry: { name, id, img } }) {
   };
 
   return (
-    <div className={`berryListItem`} onClick={handleClickBerry} key={id}>
+    <div className={`berriesListItem`} onClick={handleClickBerry} key={id}>
       <div
         className="berryImage"
         style={{ backgroundImage: `url(${img})` }}
       ></div>
-      {name}
+      <div className="name">{name}</div>
     </div>
   );
 }

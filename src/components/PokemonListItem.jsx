@@ -8,7 +8,7 @@ export default function PokemonListItem({
   const navigate = useNavigate();
 
   const handleClickPokemon = (e) => {
-    if (e.target.type !== "checkbox") {
+    if (e.target.type !== "checkbox" && e.target.className !== "name") {
       navigate(`/pokemons/${id}`);
     }
   };
@@ -29,8 +29,15 @@ export default function PokemonListItem({
         className="pokemonImage"
         style={{ backgroundImage: `url(${img})` }}
       ></div>
-      {id + ". " + name}
-      <input type="checkbox" checked={collected} onChange={handleCollected} />
+      <div className="name" onClick={handleCollected}>
+        {id + "." + name}
+        <input
+          type="checkbox"
+          checked={collected}
+          readOnly
+          className="checkbox"
+        />
+      </div>
     </div>
   );
 }
