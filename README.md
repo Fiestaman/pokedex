@@ -13,7 +13,7 @@ An interactive app that will show you all the information regarding Pokemons, it
 
 ## How to Use
 
-Run `npm start` to start app. Click on an icon to choose a section to view. Pokemons will show all the Pokemon from generations 1 through 8. Items will show you most items found in the series. Berries will show you all the berries in the series.
+Run `npm start` to start app. Click on an icon to choose a section to view. Pokemons will show all the Pokemon from generations 1 through 8. Items will show you most items found in the series. Berries will show you all the berries in the series. You may click on an item on any of these three pages to find out more information about the item.
 
 There is search functionality on each page. You may search by name on any of the pages. You may also search by National Dex id number or generation number on the Pokemons page.
 
