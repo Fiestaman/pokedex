@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import BackButton from "../components/BackButton";
 import BerriesListItem from "../components/BerriesListItem";
+import Header from "../components/Header";
 
 export default function Berries({ berriesList, setBerriesList }) {
   const [term, setTerm] = useState("");
@@ -27,10 +28,7 @@ export default function Berries({ berriesList, setBerriesList }) {
 
   return (
     <div className="berries">
-      <div className="pageTitle">
-        <BackButton />
-        <h1>Berries</h1>
-      </div>
+      <Header title="Berries" />
       <SearchBar term={term} setTerm={setTerm} key="searchBar" />
       <div className="berriesList">
         {berriesList.length > 0 ? Berries() : "Loading..."}

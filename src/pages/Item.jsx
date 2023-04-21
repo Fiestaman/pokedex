@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import BackButton from "../components/BackButton";
 import NotFound from "./NotFound";
+import Header from "../components/Header";
 
 export default function Item({ itemsList }) {
   const { id } = useParams();
@@ -30,14 +30,15 @@ export default function Item({ itemsList }) {
 
     return (
       <div className="item">
-        <div className="pageTitle">
-          <BackButton />
-          <h1 className="itemTitle">{name}</h1>
+        <Header title={name} />
+        <div className="infoPage">
+          <img src={img} alt={name} />
+          <div className="info">
+            <div className="category">Category: {categoryName}</div>
+            <div className="cost">Cost: {cost}</div>
+            <div className="flavor">{flavorText}</div>
+          </div>
         </div>
-        <img src={img} alt={name} />
-        <div className="category">Category: {categoryName}</div>
-        <div className="cost">Cost: {cost}</div>
-        <div className="flavor">{flavorText}</div>
       </div>
     );
   };

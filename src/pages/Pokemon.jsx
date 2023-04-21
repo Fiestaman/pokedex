@@ -1,9 +1,7 @@
-// import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Type from "../components/Type";
-// import GetPokemonData from "../components/GetPokemonData";
-import BackButton from "../components/BackButton";
 import NotFound from "./NotFound";
+import Header from "../components/Header";
 
 export default function Pokemon({ pokemonList }) {
   const { id } = useParams();
@@ -40,20 +38,23 @@ export default function Pokemon({ pokemonList }) {
 
     return (
       <div className="pokemon">
-        <div className="pageTitle">
-          <BackButton />
-          <h1 className="pokemonTitle">{name}</h1>
+        <Header title={name} />
+        <div className="infoPage">
+          <img src={gif} alt={name} />
+          <div className="info">
+            <div className="types">{types()}</div>
+            <div className="generation">Generation: {genName}</div>
+            <div className="hp">HP: {hp}</div>
+            <div className="attack">Attack: {attack}</div>
+            <div className="defense">Defense: {defense}</div>
+            <div className="specialAttack">Special Attack: {specialAttack}</div>
+            <div className="specialDefense">
+              Special Defense: {specialDefense}
+            </div>
+            <div className="speed">Speed: {speed}</div>
+            <div className="xp">XP: {xp || "0"}</div>
+          </div>
         </div>
-        <img src={gif} alt={name} />
-        <div className="types">{types()}</div>
-        <div className="generation">Generation: {genName}</div>
-        <div className="hp">HP: {hp}</div>
-        <div className="attack">Attack: {attack}</div>
-        <div className="defense">Defense: {defense}</div>
-        <div className="specialAttack">Special Attack: {specialAttack}</div>
-        <div className="specialDefense">Special Defense: {specialDefense}</div>
-        <div className="speed">Speed: {speed}</div>
-        <div className="xp">XP: {xp || "0"}</div>
       </div>
     );
   };

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import NotFound from "./NotFound";
+import Header from "../components/Header";
 
 export default function Berry({ berriesList }) {
   const { id } = useParams();
@@ -21,22 +22,27 @@ export default function Berry({ berriesList }) {
     const Flavors = flavors.map((flavor) => {
       return (
         <div className="flavor">
-          {flavor.pokemon_v2_berryflavor.name}: {flavor.potency}
+          {flavor.pokemon_v2_berryflavor.name[0].toUpperCase() +
+            flavor.pokemon_v2_berryflavor.name.slice(1)}
+          : {flavor.potency}
         </div>
       );
     });
 
     return (
       <div className="berry">
-        <div className="pageTitle">
-          <BackButton />
-          <h1 className="berryTitle">{name}</h1>
+        <Header title={name} />
+        <div className="infoPage">
+          <img src={img} alt={name} />
+          <div className="info">
+            <div className="size">Size: {size}</div>
+            <div className="firmness">
+              Firmness: {firmness[0].toUpperCase() + firmness.slice(1)}
+            </div>
+            <div className="firmness">Smoothness: {smoothness}</div>
+            {Flavors}
+          </div>
         </div>
-        <img src={img} alt={name} />
-        <div className="size">Size: {size}</div>
-        <div className="firmness">Firmness: {firmness}</div>
-        <div className="firmness">Smoothness: {smoothness}</div>
-        {Flavors}
       </div>
     );
   };

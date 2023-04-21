@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
-import BackButton from "../components/BackButton";
 import ItemsListItem from "../components/ItemsListItem";
+import Header from "../components/Header";
 
 export default function Items({ itemsList, setItemsList }) {
   const [term, setTerm] = useState("");
@@ -27,10 +27,7 @@ export default function Items({ itemsList, setItemsList }) {
 
   return (
     <div className="items">
-      <div className="pageTitle">
-        <BackButton />
-        <h1>Items</h1>
-      </div>
+      <Header title="Items" />
       <SearchBar term={term} setTerm={setTerm} key="searchBar" />
       <div className="itemsList">
         {itemsList.length > 0 ? Items() : "Loading..."}
