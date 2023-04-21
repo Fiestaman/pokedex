@@ -17,6 +17,8 @@ Run `npm start` to start app. Click on an icon to choose a section to view. Poke
 
 There is search functionality on each page. You may search by name on any of the pages. You may also search by National Dex id number or generation number on the Pokemons page.
 
+You may also keep track of what Pokemon you have collected on the Pokemons page. Either click the name of the Pokemon or the checkbox to toggle between collected and not collected.
+
 ## Technology Used
 
 This game was built utilizing HTML, CSS, React.js, and GraphQL.
