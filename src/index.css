@@ -32,28 +32,26 @@ html {
   display: flex;
   flex-direction: column;
   margin: auto;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-content: center;
-  /* grid-template-columns: 20px 1fr 20px; */
 }
 
 .screen {
   margin: auto;
+  margin-top: 20px;
   background: #98cc97;
   height: 825px;
   width: 700px;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .gameboy {
   margin: 0;
-  position: absolute;
-  left: 32%;
-  top: 82%;
+  justify-self: flex-end;
+  align-self: center;
   width: 600px;
+  height: 100px;
+  object-fit: cover;
 }
 
 .pokemonImage {
