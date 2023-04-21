@@ -39,8 +39,9 @@ export default function GetPokemons({ pokemonList, setPokemonList }) {
           tempResult.name[0].toUpperCase() + tempResult.name.slice(1);
         tempResult.collected = false;
         let shorturl =
-          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
-        tempResult.img = `${shorturl}${i + 1}.png`;
+          "https://assets.pokemon.com/assets/cms2/img/pokedex/full/";
+        tempResult.img = `${shorturl}${`${i + 1}`.padStart(3, 0)}.png`;
+        shorturl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`;
         tempResult.gif = `${shorturl}other/showdown/${i + 1}.gif`;
         tempResults.push(tempResult);
       }

@@ -16,7 +16,7 @@ export default function GetItems({ itemsList, setItemsList }) {
           flavor_text
         }
         category: pokemon_v2_itemcategory {
-          pokemon_v2_itemcategorynames(where: { id: { _nin: [23, 36] } }) {
+          pokemon_v2_itemcategorynames(where: { id: { _nin: [23, 36, 40] } }) {
             name
             id
           }
@@ -34,7 +34,6 @@ export default function GetItems({ itemsList, setItemsList }) {
       let { results } = completedData;
       let tempResults = [];
       for (let i = 0; i < results.length; i++) {
-        console.log("this is results[i]", results[i]);
         if (
           results[i]?.flavorText?.length === 0 ||
           results[i]?.category?.pokemon_v2_itemcategorynames.length === 0
